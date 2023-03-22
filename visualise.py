@@ -7,8 +7,8 @@ import os
 import imagePreprocessingUtils as ipu
 
 
-filename = input('Enter the csv file name to read: ')
-sub = pd.read_csv(filename)
+# filename = input('Enter the csv file name to read: ')
+sub = pd.read_csv("./submission_svm.csv")
 y_pred = np.array(sub.pop('PredictedLabel'))
 y_test = np.array(sub.pop('TrueLabel'))
 

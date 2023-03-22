@@ -40,6 +40,7 @@ def preprocess_all_images():
                         imagePath = ipu.PATH+'/'+label+'/'+image
                         #print(imagePath)
                         img = cv2.imread(imagePath)
+                        
                         if img is not None:
                             img = get_canny_edge(img)[0]
                             sift_disc = get_SIFT_descriptors(img)
@@ -94,7 +95,8 @@ def get_canny_edge(image):
 
 def get_SIFT_descriptors(canny):
     # Intialising SIFT
-    surf = cv2.xfeatures2d.SURF_create()
+    surf = cv2.SIFT_create()
+    
     #surf.extended=True
     canny = cv2.resize(canny,(256,256))
     # computing SIFT descriptors

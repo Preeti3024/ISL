@@ -53,7 +53,7 @@ def get_canny_edge(image):
 
 def get_SIFT_descriptors(canny):
     # Intialising SIFT
-    surf = cv2.xfeatures2d.SURF_create()
+    surf = cv2.SIFT_create()
     #surf.extended=True
     canny = cv2.resize(canny,(256,256))
     # computing SIFT descriptors
@@ -68,9 +68,9 @@ def find_index(image, center):
     index = 0
     for i in range(len(center)):
         if(i == 0):
-           count = distance.euclidean(image, center[i]) 
+           count = cv2.distanceTransform.euclidean(image, center[i]) 
         else:
-            calculated_distance = distance.euclidean(image, center[i]) 
+            calculated_distance = cv2.distanceTransform.euclidean(image, center[i]) 
             if(calculated_distance < count):
                 index = i
                 count = calculated_distance

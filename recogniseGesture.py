@@ -15,7 +15,7 @@ def recognise(cluster_model, classify_model):
     global CAPTURE_FLAG
     gestures = ipu.get_all_gestures()
     cv2.imwrite("all_gestures.jpg", gestures)
-    camera = cv2.VideoCapture(1)
+    camera = cv2.VideoCapture(0)
     print('Now camera window will be open, then \n1) Place your hand gesture in ROI (rectangle) \n2) Press esc key to exit.')
     count = 0
     while(True):
@@ -23,8 +23,8 @@ def recognise(cluster_model, classify_model):
         frame = cv2.flip(frame,1)
         cv2.rectangle(frame,ipu.START, ipu.END,(0,255,0),2 )
         cv2.imshow("All_gestures", gestures)
-        pressedKey = cv2.waitKey(1)
-        if pressedKey == 27:
+        pressedKey = cv2.waitKey(27)
+        if pressedKey == 1:
             break
         elif pressedKey == ord('p'):
             if(CAPTURE_FLAG):
